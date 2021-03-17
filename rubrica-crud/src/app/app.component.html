@@ -1,0 +1,34 @@
+<div *ngIf="formDivVisible">
+  Nome
+  <input type="text" [(ngModel)]="contatto.nome" [disabled]="campiNonEditabili">
+  Cognome
+  <input type="text" [(ngModel)]="contatto.cognome" [disabled]="campiNonEditabili">
+  Telefono
+  <input type="text" [(ngModel)]="contatto.telefono" [disabled]="campiNonEditabili">
+  <br>
+  <button (click)="modifica()" *ngIf="!confAnnVisible">Modifica</button>
+  <button (click)="conferma()" *ngIf="confAnnVisible">Conferma</button>
+  <button (click)="annulla()" *ngIf="confAnnVisible">Annulla</button>
+  <button (click)="rimuovi()" *ngIf="!confAnnVisible">Rimuovi</button>
+</div>
+<br>
+<button (click)="nuovo()" *ngIf="buttonNuovaVisible">Nuovo contatto</button>
+<br>
+<input type="text" [(ngModel)]="criterio" *ngIf="searchVisible">
+<button (click)="cerca()" *ngIf="searchVisible">Cerca contatto</button>
+<table *ngIf="searchVisible">
+  <tr *ngFor="let c of rubrica">
+    <td>
+      {{c.nome}}
+    </td>
+    <td>
+      {{c.cognome}}
+    </td>
+    <td>
+      {{c.telefono}}
+    </td>
+    <td>
+      <button (click)="seleziona(c)">Seleziona</button>
+    </td>
+  </tr>
+</table>
